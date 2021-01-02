@@ -14,7 +14,7 @@ describe("Instagram", () => {
 
   it("login method should be logged in successfully", async () => {
     const username = "erolsnlpoke@gmail.com";
-    const password = "Pistols987";
+    const password = "testing123";
 
     const success = await ig.login(username, password);
 
