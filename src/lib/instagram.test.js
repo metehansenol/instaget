@@ -21,6 +21,24 @@ describe("Instagram", () => {
     expect(success).toBe(true);
   });
 
+  it("getProfileInfo should get profile info successfully for given username", async () => {
+    const username = "account_name";
+    const profileInfo = await ig.getProfileInfo(username);
+
+    expect(profileInfo).toBeDefined();
+    expect(profileInfo.id).toBeDefined();
+    expect(profileInfo.username).toEqual(username);
+  });
+
+  it("search should get correct array of accounts for given search term", async () => {
+    const query = "john";
+
+    const results = await ig.search(query);
+
+    expect(results).toBeDefined();
+    expect(results.users).toBeDefined();
+  });
+
   afterAll(async done => {
     await ig.close();
     done();

@@ -2,7 +2,7 @@ import Browser from "./browser";
 
 class Instagram {
   constructor() {
-    this.browser = new Browser(true);
+    this.browser = new Browser(false);
     this.baseUrl = "https://www.instagram.com/";
   }
 
@@ -33,7 +33,7 @@ class Instagram {
     return this.isLoggedIn();
   }
 
-  async profileInfo(username) {
+  async getProfileInfo(username) {
     const url = `https://www.instagram.com/${username}/?__a=1`;
 
     const page = await this.browser.getPage();
@@ -46,7 +46,11 @@ class Instagram {
       throw new Error("An error occurred while executing http request");
     }
 
-    return response.json();
+    const result = await response.json();
+
+    const { user } = result.graphql;
+
+    return user;
   }
 
   /**
@@ -66,11 +70,7 @@ class Instagram {
       throw new Error("An error occurred while executing http request");
     }
 
-    const results = await response.json();
-
-    return results.users.map(function (item) {
-      return item.user.username;
-    });
+    return response.json();
   }
 
   async close() {
