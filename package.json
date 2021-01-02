@@ -1,24 +1,37 @@
 {
   "name": "instaget",
   "version": "0.1.0",
-  "description": "A tiny javascript library to get basic data from instagram accounts",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "description": "A tiny Node.js API to get data from Instagram",
+  "main": "./src/index.js",
   "author": "Metehan Senol",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metehansenol/instaget"
+  },
+  "keywords": [
+    "instagram",
+    "search",
+    "profile",
+    "api",
+    "node"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
-    "jsdom": "^16.4.0",
     "puppeteer": "^5.5.0",
     "puppeteer-core": "^5.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
     "prettier": "^2.0.5"
   }
 }

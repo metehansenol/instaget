@@ -1,21 +1,36 @@
-import Browser from "./browser.js";
-
-// import jsdom from "jsdom";
-
-// const { JSDOM } = jsdom;
+import Browser from "./browser";
 
 class Instagram {
   constructor() {
-    this.browser = new Browser();
+    this.browser = new Browser(true);
     this.baseUrl = "https://www.instagram.com/";
+  }
+
+  async isLoggedIn() {
+    const page = await this.browser.getPage();
+
+    const classNames = await page.$eval("html", el => el.className);
+
+    return classNames.split(" ").includes("logged-in");
   }
 
   async login(username, password) {
     const page = await this.browser.getPage();
-    await page.goto(this.baseUrl, { waitUntil: "networkidle0" });
+
+    const response = await page.goto(this.baseUrl, { waitUntil: "networkidle0" });
+
+    if (!response.ok() || response.status() !== 200) {
+      throw new Error("An error occurred while executing http request");
+    }
+
     await page.type('input[name="username"]', username);
     await page.type('input[name="password"]', password);
+
     await page.keyboard.press("Enter");
+
+    await page.waitForNavigation({ waitUntil: "networkidle0" });
+
+    return this.isLoggedIn();
   }
 
   async profileInfo(username) {
@@ -56,6 +71,10 @@ class Instagram {
     return results.users.map(function (item) {
       return item.user.username;
     });
+  }
+
+  async close() {
+    return this.browser.close();
   }
 }
 

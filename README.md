@@ -1,12 +1,14 @@
-# A tiny javascript library to get basic data from instagram accounts
+# A tiny Node.js API to get data from Instagram
 
-This is a tiny javascript library that allows following operations on instagram:
+This is a tiny Node.js API that allows following operations on Instagram:
 
 ```
 login to instagram via an instagram username and password
 get basic profile information
 search instagram accounts
 ```
+
+Note: This library uses Chrome engine via [Puppeteer](https://github.com/puppeteer/puppeteer)
 
 # Installation
 
@@ -21,7 +23,7 @@ $ npm i instaget --save
 In a Javascript ES6 project:
 
 ```js
-import Instagram from "instaget";
+import { Instagram } from "instaget";
 
 const ig = new Instagram();
 
