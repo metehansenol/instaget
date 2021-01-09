@@ -29,7 +29,7 @@ $ yarn add instaget
 In a Javascript ES6 project:
 
 ```js
-const Instagram = require("instaget");
+import Instagram from "instaget";
 
 const ig = new Instagram();
 
