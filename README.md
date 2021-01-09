@@ -18,6 +18,12 @@ Via npm:
 $ npm i instaget --save
 ```
 
+Or yarn:
+
+```
+$ yarn add instaget
+```
+
 # Usage
 
 In a Javascript ES6 project:
