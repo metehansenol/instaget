@@ -1,0 +1,31 @@
+# source files and packages
+src
+node_modules
+
+#tests
+test
+coverage
+jest*
+
+#build tools
+.travis.yml
+.jenkins.yml
+.codeclimate.yml
+babel*
+
+#linters
+.jscsrc
+.jshintrc
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+#editor settings
+.vscode
+.idea
+.editorconfig
+
+# dotenv environment variables file(s)
+.env
+.env.*
+.env*

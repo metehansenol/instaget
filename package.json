@@ -1,8 +1,8 @@
 {
   "name": "instaget",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A tiny Node.js API to get data from Instagram",
-  "main": "./src/index.js",
+  "main": "index.js",
   "author": "Metehan Senol",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,8 @@
     "node"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
+    "@babel/cli": "^7.12.10",
     "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",

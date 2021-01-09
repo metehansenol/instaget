@@ -7,6 +7,6 @@ module.exports = {
     "^.+\\.js$": "babel-jest"
   },
   transformIgnorePatterns: ["src/node_modules/(?!@sapper)"],
-  testMatch: ["<rootDir>/src/**/*.test.js"],
+  testMatch: ["<rootDir>/test/*.test.js"],
   setupFilesAfterEnv: ["./jest.setup.js"]
 };

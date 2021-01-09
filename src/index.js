@@ -1,5 +1,3 @@
-import Instagram from "./lib/instagram";
+import Instagram from "./instagram";
 
-module.exports = {
-  Instagram
-};
+module.exports = Instagram;

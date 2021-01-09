@@ -1,5 +1,5 @@
 import config from "../config";
-import Instagram from "./instagram";
+import Instagram from "../src/instagram";
 
 describe("Instagram", () => {
   let ig = null;
