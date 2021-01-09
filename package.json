@@ -20,8 +20,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "puppeteer": "^5.5.0",
-    "puppeteer-core": "^5.5.0"
+    "dotenv": "^8.2.0",
+    "puppeteer": "^5.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

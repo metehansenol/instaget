@@ -2,8 +2,13 @@ import puppeteer from "puppeteer";
 
 /** Browser is a wrapper and helper class which provides a high-level functions for Puppeteer */
 class Browser {
-  constructor(headless = true) {
-    // this.headless = headless;
+  constructor(
+    options = {
+      headless: true,
+      devtools: false
+    }
+  ) {
+    this.options = options;
     this._instance = null;
     this._page = null;
   }
@@ -15,8 +20,8 @@ class Browser {
   async getInstance() {
     if (!this._instance) {
       this._instance = await puppeteer.launch({
-        headless: true,
-        devtools: false
+        headless: this.options.headless,
+        devtools: this.options.devtools
       });
     }
     return this._instance;

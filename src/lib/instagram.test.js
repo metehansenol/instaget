@@ -1,10 +1,14 @@
+import config from "../config";
 import Instagram from "./instagram";
 
 describe("Instagram", () => {
   let ig = null;
 
   beforeAll(() => {
-    ig = new Instagram();
+    ig = new Instagram({
+      headless: config.headless == "true",
+      devtools: false
+    });
   });
 
   it("ig should have initialized correctly", () => {
@@ -13,8 +17,7 @@ describe("Instagram", () => {
   });
 
   it("login method should be logged in successfully", async () => {
-    const username = "erolsnlpoke@gmail.com";
-    const password = "testing123";
+    const { username, password } = config.instagram;
 
     const success = await ig.login(username, password);
 

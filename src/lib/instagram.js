@@ -1,9 +1,15 @@
 import Browser from "./browser";
 
 class Instagram {
-  constructor() {
-    this.browser = new Browser(false);
-    this.baseUrl = "https://www.instagram.com/";
+  constructor(
+    options = {
+      headless: true,
+      devtools: false
+    }
+  ) {
+    this.options = options;
+    this.browser = new Browser(options);
+    this.baseUrl = "https://www.instagram.com";
   }
 
   async isLoggedIn() {
@@ -33,8 +39,12 @@ class Instagram {
     return this.isLoggedIn();
   }
 
+  /**
+   * Get profile info about given username
+   * @param {string} username - instagram username
+   */
   async getProfileInfo(username) {
-    const url = `https://www.instagram.com/${username}/?__a=1`;
+    const url = `${this.baseUrl}/${username}/?__a=1`;
 
     const page = await this.browser.getPage();
     const response = await page.goto(url);
@@ -58,7 +68,7 @@ class Instagram {
    * @param {string} query - search term
    */
   async search(query) {
-    const url = `https://www.instagram.com/web/search/topsearch/?query=${query}`;
+    const url = `${this.baseUrl}/web/search/topsearch/?query=${query}`;
 
     const page = await this.browser.getPage();
     const response = await page.goto(url);
