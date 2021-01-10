@@ -1,5 +1,7 @@
 import Browser from "./browser";
 import { validateResponseJson } from "./utils";
+
+// TODO: add js doc description
 class Instagram {
   constructor(
     options = {
@@ -12,6 +14,7 @@ class Instagram {
     this.baseUrl = "https://www.instagram.com";
   }
 
+  // TODO: add js doc description
   async isLoggedIn() {
     const page = await this.browser.getPage();
 
@@ -20,6 +23,7 @@ class Instagram {
     return classNames.split(" ").includes("logged-in");
   }
 
+  // TODO: add js doc for parameters and return type
   async login(username, password) {
     const page = await this.browser.getPage();
 
@@ -53,10 +57,6 @@ class Instagram {
 
     const result = await response.json();
 
-    if (!result || !result.graphql || !result.graphql.user) {
-      throw new Error("User not found");
-    }
-
     const { user } = result.graphql;
 
     return user;
@@ -77,6 +77,7 @@ class Instagram {
     return response.json();
   }
 
+  // TODO: add js doc description
   async close() {
     return this.browser.close();
   }
