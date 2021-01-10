@@ -33,6 +33,12 @@ describe("Instagram", () => {
     expect(profileInfo.username).toEqual(username);
   });
 
+  it("getProfileInfo should throw user not found error for non existed username", async () => {
+    const username = "dkfsdsdflksdfjkllsdfjlsksfjkld";
+
+    await expect(ig.getProfileInfo(username)).rejects.toThrow();
+  });
+
   it("search should get correct array of accounts for given search term", async () => {
     const query = "john";
 

@@ -1,5 +1,5 @@
 import Browser from "./browser";
-
+import { validateResponseJson } from "./utils";
 class Instagram {
   constructor(
     options = {
@@ -49,14 +49,13 @@ class Instagram {
     const page = await this.browser.getPage();
     const response = await page.goto(url);
 
-    // TODO: check 403 redirect login
-    // TODO: create constants and put error messages
-
-    if (!response.ok() || response.status() !== 200) {
-      throw new Error("An error occurred while executing http request");
-    }
+    validateResponseJson(response);
 
     const result = await response.json();
+
+    if (!result || !result.graphql || !result.graphql.user) {
+      throw new Error("User not found");
+    }
 
     const { user } = result.graphql;
 
@@ -73,12 +72,7 @@ class Instagram {
     const page = await this.browser.getPage();
     const response = await page.goto(url);
 
-    // TODO: check 403 redirect login
-    // TODO: create constants and put error messages
-
-    if (!response.ok() || response.status() !== 200) {
-      throw new Error("An error occurred while executing http request");
-    }
+    validateResponseJson(response);
 
     return response.json();
   }
